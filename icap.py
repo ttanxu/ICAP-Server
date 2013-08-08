@@ -17,6 +17,7 @@ OptionsHandler = ICAPConf.options()
 from iohelper import readheader
 
 sock = socket.socket()
+sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 sock.bind(('localhost',ICAPConf.port()))
 sock.listen(ICAPConf.maxconn())
 print 'Open socket at port ' + str(ICAPConf.port()) + ' to listen...'
